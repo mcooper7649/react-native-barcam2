@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "barcam",
+    "slug": "barcam",
+    "version": "1.0.0",
+    "assetBundlePatterns": ["**/*"]
+  },
+  "name": "barcam",
+  "plugins": [
+    [
+      "expo-image-picker",
+      {
+        "cameraPermission": "The app needs access to your camera in order to take photos of your favorite spots.",
+        "microphonePermission": "Allow Barcam to access your microphone"
+      }
+    ],
+    [
+      "module:react-native-dotenv",
+      {
+        "envName": "APP_ENV",
+        "moduleName": "@env",
+        "path": ".env"
+      }
+    ]
+  ]
+}
