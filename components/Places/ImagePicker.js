@@ -8,7 +8,7 @@ import {
 import { Colors } from '../../constants/Colors';
 import OutlineButton from '../UI/OutlineButton';
 
-function ImagePicker() {
+function ImagePicker({ onTakeImage }) {
   const [pickedImage, setPickedImage] = useState(null);
   const [cameraPermissionInformation, requestPermission] =
     useCameraPermissions();
@@ -43,8 +43,13 @@ function ImagePicker() {
       aspect: [16, 9],
       quality: 0.5,
     });
-    setPickedImage(image.assets[0].uri);
-    console.log(image.assets[0].uri);
+    if (!image.canceled) {
+      setPickedImage(image.assets[0].uri);
+      console.log(image.assets[0].uri);
+      onTakeImage(image.assets[0].uri);
+    } else {
+      Alert('No image taken');
+    }
   }
 
   let imagePreview = <Text>No image taken yet.</Text>;
